@@ -1,6 +1,6 @@
 <h1>Weather App</h1>
 <h2>Prerequisites</h2>
-<a href="https://reactjs.org/">React</a>
+<a href="https://reactjs.org/">React</a></br>
 <a href="https://openweathermap.org/">Open Weather</a>
 <h2>Introduction</h2>
 <p>
