@@ -5,7 +5,7 @@ import './App.css';
 
 dotenv.config();
 const api = {
-  key : 'ba1c7f0e928a94a790928ae02faeed1a',
+  key : API_KEY,
   url : 'https://api.openweathermap.org/data/2.5/',
 }
 
