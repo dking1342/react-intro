@@ -21,6 +21,12 @@ if(process.env.NODE_ENV === 'development'){
 const { router } = require('./routes/transactions')
 app.use('/api/v1/transactions',router);
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+
+    app.get('*',(req,res)=> res.sendFile(`${__dirname}/client/build/index.html`))
+}
+
 // init server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`Server running in ${ process.env.NODE_ENV } mode on PORT ${PORT}`.yellow.bold));
