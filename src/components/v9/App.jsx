@@ -13,6 +13,16 @@ export class App extends Component {
     ]
   }
 
+  constructor(props){
+    super(props);
+    console.log('app contructor lifecycle hook');
+  }
+
+  componentDidMount(){
+    // ajax call
+    console.log('app did mount lifecycle hook');
+  }
+
   handleDelete = (id) => {
       this.setState({
           counters: this.state.counters.filter(counter=> counter.id !== id)
@@ -43,19 +53,8 @@ export class App extends Component {
       this.setState({ counters });
   }
 
-  handleSortAsc = () => {
-    let counters = [...this.state.counters];
-    counters = counters.sort((a,b) =>  (a.item > b.item) ? 1 : -1)
-    this.setState({ counters })
-  }
-
-  handleSortDes = () => {
-    let counters = [...this.state.counters];
-    counters = counters.sort((a,b) =>  (a.item > b.item) ? -1 : 1)
-    this.setState({ counters })
-  }
-
   render() {
+    console.log('app render lifecycle hook');
     return (
       <>
         <Navbar 
@@ -68,9 +67,7 @@ export class App extends Component {
             onDecrement={ this.handleDecrement }
             onIncrement={ this.handleIncrement }
             onDelete={ this.handleDelete }
-            onSortAsc={ this.handleSortAsc }
-            onSortDes={ this.handleSortDes }
-            
+          
           />
         </main>
       </>
