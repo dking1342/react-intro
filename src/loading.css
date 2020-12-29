@@ -1,0 +1,31 @@
+
+  
+  svg{
+    height:300px;
+    width:300px;
+    transform-origin: center;
+    animation: spin 1s linear infinite forwards;
+  }
+  #loader{
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 0;
+    animation: loadingCircle 2s ease-in-out infinite alternate forwards;
+  }
+  
+  @keyframes spin {
+    0%{
+      transform:rotateZ(0deg);
+    }
+    100%{
+      transform:rotateZ(360deg);
+    }
+  }
+  
+  @keyframes loadingCircle {
+    0%{
+      stroke-dasharray: 500;
+    }
+    100%{
+      stroke-dasharray: 1250;
+    }
+  }
