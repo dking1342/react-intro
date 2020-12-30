@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect} from 'react';
+import data from './data';
+
+import Header from './components/Header';
+import Slides from './components/Slides';
 
 function App() {
+  const [people, setPeople]=useState(data);
+  const [index, setIndex ]=useState(0);
+
+  useEffect(()=>{
+    if(index < 0){
+      setIndex(people.length - 1);
+    } else if(index > people.length - 1){
+      setIndex(0);
+    } else{
+      setIndex(index);
+    }
+  },[index,people])
+
+  useEffect(()=>{
+    let slider = setInterval(()=>{
+      setIndex(index + 1);
+    }, 3000)
+    return ()=>clearInterval(slider);
+  },[index])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="section">
+      <Header />
+      <Slides 
+        people={ people }
+        index = { index }
+        setIndex= { setIndex }
+      />
+
+    </section>
+
   );
 }
 
